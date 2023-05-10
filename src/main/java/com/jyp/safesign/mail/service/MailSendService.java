@@ -9,7 +9,6 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
-import java.util.Random;
 
 @Service
 public class MailSendService {
@@ -42,7 +41,7 @@ public class MailSendService {
 
         MimeMessage mail = mailSender.createMimeMessage();
         String mailContent = "<h1>[이메일 인증]</h1><br><p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>"
-                + "<a href='http://localhost:8080/member/signUpConfirm?email="
+                + "<a href='http://localhost:8080/signUpConfirm?email="
                 + email + "&mailKey=" + mailKey + "' target='_blenk'>이메일 인증 확인</a>";
         try {
             mail.setSubject("회원가입 이메일 인증 ", "utf-8");

@@ -14,4 +14,10 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
             "where m.email = :email and " +
             "m.mailKey = :mailKey")
     Optional<Member> findMemberByEmailAndEmailKey(@Param("email")String email, @Param("mailKey")String mailKey);
+
+    @Query("select distinct m from Member m " +
+            "where m.email = :email and " +
+            "m.password = :password and " +
+            "m.mailAuth = 1")
+    Member findMemberByEmailAndPassword(@Param("email")String mail, @Param("password")String password);
 }

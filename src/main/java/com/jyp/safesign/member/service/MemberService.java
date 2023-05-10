@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.Map;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -50,5 +49,17 @@ public class MemberService {
             member.updateMailAuth();
             System.out.println("인증되었습니다.");
         }
+    }
+
+    @Transactional
+    public MemberResponseDTO checkMember(String email, String password) {
+        Member member = memberRepository.findMemberByEmailAndPassword(email, password);
+        return MemberResponseDTO.from(member);
+    }
+
+    @Transactional
+    public String getMailKey(String email) {
+        Member member = memberRepository.findMemberByEmail(email);
+        return member.getMailKey();
     }
 }
