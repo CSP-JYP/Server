@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    url: jdbc:mysql://127.0.0.1:3306/jyp_safesign?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+    password: '1234'
+  jpa:
+    properties:
+      hibernate:
+        format_sql: 'true'
+    show-sql: 'true'
+    hibernate:
+      ddl-auto: 'update'
+  springdoc:
+    version: '@project.version@'
+    api-docs:
+      path: /api-docs
+    default-consumes-media-type: application/json
+    default-produces-media-type: application/json
+    swagger-ui:
+      operations-sorter: alpha
+      tags-sorter: alpha
+      path: /swagger-ui.html
+      disable-swagger-default-url: true
+      display-query-params-without-oauth2: true
+    paths-to-match:
+      - /api/v1/**
