@@ -32,9 +32,9 @@ public class MemberService {
     }
 
     @Transactional
-    public void updateEmailKey(String email, String emailKey) {
+    public void update(String email, String emailKey, String password) {
         Member member = memberRepository.findMemberByEmail(email);
-        member.updateMailKey(emailKey);
+        member.updateMailKeyAndPassword(emailKey, password);
         memberRepository.save(member);
     }
 

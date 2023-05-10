@@ -33,7 +33,6 @@ public class Member {
     @Column(nullable = false)
     private String sign;
 
-    @Column(length = 6)
     private String mailKey;
 
     @ColumnDefault("0")
@@ -58,8 +57,9 @@ public class Member {
         this.modifiedAt = modifiedAt;
     }
 
-    public void updateMailKey(String mailKey) {
+    public void updateMailKeyAndPassword(String mailKey, String password) {
         this.mailKey = mailKey;
+        this.password = password;
     }
 
     public void updateMailAuth() {

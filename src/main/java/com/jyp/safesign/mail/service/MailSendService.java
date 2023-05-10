@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 @Service
@@ -18,22 +19,26 @@ public class MailSendService {
 
     //인증코드 난수 발생
     private String getAuthCode(int size) {
-        Random random = new Random();
-        StringBuffer buffer = new StringBuffer();
-        int num = 0;
+        SecureRandom rnd = new SecureRandom();
+        byte[] temp = new byte[size];
+        rnd.nextBytes(temp);
 
-        while(buffer.length() < size) {
-            num = random.nextInt(10);
-            buffer.append(num);
+        return Byte_to_String(temp);
+    }
+
+    // 바이트 값을 16진수로 변경해준다
+    public String Byte_to_String(byte[] temp) {
+        StringBuilder sb = new StringBuilder();
+        for(byte a : temp) {
+            sb.append(String.format("%02x", a));
         }
-
-        return buffer.toString();
+        return sb.toString();
     }
 
     //인증메일 보내기
     public String sendAuthMail(String email) {
         //6자리 난수 인증번호 생성
-        String mailKey = getAuthCode(6);
+        String mailKey = getAuthCode(16);
 
         MimeMessage mail = mailSender.createMimeMessage();
         String mailContent = "<h1>[이메일 인증]</h1><br><p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>"
