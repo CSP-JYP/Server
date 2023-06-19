@@ -4,7 +4,7 @@
 ## 📺 SafeSign 이메일 인증 예시 📺
 | 회원가입 화면 | 이메일 인증 화면 |
 | :---:| :---: |
-| <img src="https://github.com/CSP-JYP/Front/assets/74671573/86996c2e-4911-4749-b64d-4180d79dd624" width="20%" height="20%"}/> | <img src="https://github.com/CSP-JYP/Server/assets/74671573/2fa18f34-95e0-4ec8-b9b6-a7a2197d6d0f"/> | 
+| <img src="https://github.com/CSP-JYP/Front/assets/74671573/86996c2e-4911-4749-b64d-4180d79dd624" width="50%" height="50%"/> | <img src="https://github.com/CSP-JYP/Server/assets/74671573/2fa18f34-95e0-4ec8-b9b6-a7a2197d6d0f"/> | 
 
 ## 🛠️ 기술 스택 🛠️
 <table>
